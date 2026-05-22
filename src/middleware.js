@@ -1,18 +1,15 @@
 import { NextResponse } from 'next/server';
 
 export function middleware(request) {
-  const url = request.nextUrl.clone();
-  const { pathname } = url;
+  const { pathname } = request.nextUrl;
 
-  // Perform permanent 301 redirects for legacy capitalized routes
+  // Perform permanent 301 redirects for legacy capitalized routes using recommended safe URL constructor
   if (pathname === '/About') {
-    url.pathname = '/about';
-    return NextResponse.redirect(url, 301);
+    return NextResponse.redirect(new URL('/about', request.url), 301);
   }
 
   if (pathname === '/Contact') {
-    url.pathname = '/contact';
-    return NextResponse.redirect(url, 301);
+    return NextResponse.redirect(new URL('/contact', request.url), 301);
   }
 
   return NextResponse.next();

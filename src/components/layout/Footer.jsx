@@ -10,7 +10,7 @@ export default function Footer() {
   const isInvertedClass = isLight ? "" : "invert";
 
   return (
-    <footer className="bg-card text-foreground pt-24 pb-12 border-t border-border transition-colors duration-500">
+    <footer className="bg-card text-foreground pt-24 pb-12 border-t border-border transition-colors duration-500 relative z-10">
       <div className="container mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-4 gap-16 mb-16">
         {/* Brand */}
         <div className="space-y-6">

@@ -6,74 +6,74 @@ import { ArrowRight, Quote, Plus, Minus, X, Check, Ruler, Info } from "lucide-re
 import { useTheme } from "@/components/theme/ThemeProvider";
 
 const fabricProducts = [
-  { 
-    id: "fab-1", 
-    name: "Pure White Premium Linen", 
-    price: "₹1,499", 
-    type: "linen", 
-    img: "/assets/fabric-1.jpg", 
-    details: "European premium 70 lea pure linen fabric designed for breathable wear and natural texture. Crisp, structured, and luxurious.", 
-    weight: "135 GSM", 
+  {
+    id: "fab-1",
+    name: "Pure White Premium Linen",
+    price: "₹1,499",
+    type: "linen",
+    img: "/assets/fabric-1.jpg",
+    details: "European premium 70 lea pure linen fabric designed for breathable wear and natural texture. Crisp, structured, and luxurious.",
+    weight: "135 GSM",
     composition: "100% Pure Flax",
     weave: "Plain Weave",
     feel: "Cool & Crisp"
   },
-  { 
-    id: "fab-2", 
-    name: "Midnight Navy Cotton", 
-    price: "₹1,299", 
-    type: "cotton", 
-    img: "/assets/fabric-2.jpg", 
-    details: "Balanced cotton and linen fibers created for soft texture and comfortable everyday use. Highly durable and rich in color deepness.", 
-    weight: "120 GSM", 
+  {
+    id: "fab-2",
+    name: "Midnight Navy Cotton",
+    price: "₹1,299",
+    type: "cotton",
+    img: "/assets/fabric-2.jpg",
+    details: "Balanced cotton and linen fibers created for soft texture and comfortable everyday use. Highly durable and rich in color deepness.",
+    weight: "120 GSM",
     composition: "80% Cotton / 20% Linen",
     weave: "Twill",
     feel: "Ultra-Soft & Smooth"
   },
-  { 
-    id: "fab-3", 
-    name: "Olive Green Rustic Linen", 
-    price: "₹1,699", 
-    type: "linen", 
-    img: "/assets/fabric-3.jpg", 
-    details: "Textured linen fibers dyed in an organic earthy olive tone. High breathability with gorgeous rustic drape characteristics.", 
-    weight: "140 GSM", 
+  {
+    id: "fab-3",
+    name: "Olive Green Rustic Linen",
+    price: "₹1,699",
+    type: "linen",
+    img: "/assets/fabric-3.jpg",
+    details: "Textured linen fibers dyed in an organic earthy olive tone. High breathability with gorgeous rustic drape characteristics.",
+    weight: "140 GSM",
     composition: "100% Pure Flax",
     weave: "Plain Weave",
     feel: "Textured & Breathable"
   },
-  { 
-    id: "fab-4", 
-    name: "Sky Blue Oxford", 
-    price: "₹1,499", 
-    type: "cotton", 
-    img: "/assets/fabric-4.jpg", 
-    details: "A classic oxford weave with sky blue warp and white weft threads. Excellent regular everyday shirting choice.", 
-    weight: "115 GSM", 
+  {
+    id: "fab-4",
+    name: "Sky Blue Oxford",
+    price: "₹1,499",
+    type: "cotton",
+    img: "/assets/fabric-4.jpg",
+    details: "A classic oxford weave with sky blue warp and white weft threads. Excellent regular everyday shirting choice.",
+    weight: "115 GSM",
     composition: "100% Egyptian Cotton",
     weave: "Oxford",
     feel: "Durable & Comfortable"
   },
-  { 
-    id: "fab-5", 
-    name: "Charcoal Textured Blend", 
-    price: "₹1,899", 
-    type: "blends", 
-    img: "/assets/fabric-5.jpg", 
-    details: "Intricately woven dark charcoal fibers offering subtle tone variations. Ideal for relaxed unstructured summer tailoring.", 
-    weight: "130 GSM", 
+  {
+    id: "fab-5",
+    name: "Charcoal Textured Blend",
+    price: "₹1,899",
+    type: "blends",
+    img: "/assets/fabric-5.jpg",
+    details: "Intricately woven dark charcoal fibers offering subtle tone variations. Ideal for relaxed unstructured summer tailoring.",
+    weight: "130 GSM",
     composition: "60% Linen / 40% Cotton",
     weave: "Chambray",
     feel: "Balanced Softness"
   },
-  { 
-    id: "fab-6", 
-    name: "Desert Sand Pure Linen", 
-    price: "₹1,499", 
-    type: "linen", 
-    img: "/assets/fabric-6.jpg", 
-    details: "Soft beige pure linen reflecting desert organic aesthetics. Breathable, lightweight, and perfect for resort wear or casual shirts.", 
-    weight: "125 GSM", 
+  {
+    id: "fab-6",
+    name: "Desert Sand Pure Linen",
+    price: "₹1,499",
+    type: "linen",
+    img: "/assets/fabric-6.jpg",
+    details: "Soft beige pure linen reflecting desert organic aesthetics. Breathable, lightweight, and perfect for resort wear or casual shirts.",
+    weight: "125 GSM",
     composition: "100% Pure Flax",
     weave: "Plain Weave",
     feel: "Lightweight & Aerated"
@@ -136,13 +136,13 @@ export default function FabricsContent() {
     return () => clearInterval(interval);
   }, []);
 
-  const filteredFabrics = filter === "all" 
-    ? fabricProducts 
+  const filteredFabrics = filter === "all"
+    ? fabricProducts
     : fabricProducts.filter(f => f.type === filter);
 
   return (
     <div className="min-h-screen bg-background relative flex flex-col overflow-hidden">
-      
+
       {/* Animated Crossfading Background Layer specifically for Fabrics Page */}
       <div className="fixed inset-0 z-0 pointer-events-none">
         <AnimatePresence mode="popLayout">
@@ -150,27 +150,38 @@ export default function FabricsContent() {
             key={bgIndex}
             src={bgImages[bgIndex]}
             initial={{ opacity: 0, scale: 1.08 }}
-            animate={{ opacity: isLight ? 0.15 : 0.28, scale: 1.02 }}
+            animate={{ opacity: isLight ? 0.28 : 0.42, scale: 1.02 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 3.5, ease: "easeInOut" }}
             className={`absolute inset-0 w-full h-full object-cover filter grayscale mix-blend-overlay ${isLight ? "brightness-100" : "brightness-50"}`}
           />
         </AnimatePresence>
-        <div className="absolute inset-0 bg-gradient-to-b from-background via-background/85 to-background" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-background/65 to-background" />
       </div>
 
       <div className="relative z-10 w-full">
         {/* HERO SECTION */}
-        <section className="min-h-[70vh] flex items-center justify-center pt-40 pb-20 px-6 relative border-b border-border/40">
-          <div className="max-w-4xl mx-auto text-center">
-            <motion.p 
+        <section className="min-h-[70vh] flex items-center justify-center pt-40 pb-20 px-6 relative border-b border-border/40 overflow-hidden">
+          {/* Premium Linen Clothing Background */}
+          <div className="absolute inset-0 z-0 pointer-events-none">
+            <img
+              src="/assets/fabrics_hero_bg.png"
+              alt="Premium tailored linen background"
+              className={`w-full h-full object-cover transition-all duration-700 ${isLight ? "opacity-[0.35] brightness-105" : "opacity-[0.48] brightness-50"
+                }`}
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-background/5 via-background/40 to-background" />
+          </div>
+
+          <div className="max-w-4xl mx-auto text-center relative z-10">
+            <motion.p
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               className="text-xs font-semibold tracking-[0.3em] text-primary uppercase mb-6"
             >
               Classic Collection
             </motion.p>
-            <motion.h1 
+            <motion.h1
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.1 }}
@@ -179,7 +190,7 @@ export default function FabricsContent() {
               Natural Fabrics<br />
               <span className="italic font-light text-primary font-heading">For Everyday Use</span>
             </motion.h1>
-            <motion.p 
+            <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.2 }}
@@ -199,7 +210,7 @@ export default function FabricsContent() {
                 { t: "Everyday Fabric Options", d: "Selected fabrics suitable for shirt construction, regular use, and balanced fabric feel.", icon: "/icons/user-logo.svg" },
                 { t: "Simple Fabric Selection", d: "Choose fabrics based on texture, blend, and everyday shirting preference.", icon: "/icons/search-logo.svg" }
               ].map((f, i) => (
-                <motion.div 
+                <motion.div
                   key={i}
                   initial={{ opacity: 0, y: 25 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -221,7 +232,7 @@ export default function FabricsContent() {
         {/* FABRIC PRODUCTS GRID WITH INTERACTIVE FILTER */}
         <section className="py-32 px-6">
           <div className="max-w-7xl mx-auto">
-            
+
             {/* Header + Tabs Filter */}
             <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8">
               <div className="text-left">
@@ -235,9 +246,8 @@ export default function FabricsContent() {
                   <button
                     key={category}
                     onClick={() => setFilter(category)}
-                    className={`px-5 py-2 text-xs uppercase tracking-widest font-semibold transition-all relative ${
-                      filter === category ? "text-primary" : "text-secondary-text hover:text-foreground"
-                    }`}
+                    className={`px-5 py-2 text-xs uppercase tracking-widest font-semibold transition-all relative ${filter === category ? "text-primary" : "text-secondary-text hover:text-foreground"
+                      }`}
                   >
                     {category === "all" ? "All Fabrics" : category === "linen" ? "Pure Linen" : category === "cotton" ? "Cotton" : "Textured Blends"}
                     {filter === category && (
@@ -251,17 +261,17 @@ export default function FabricsContent() {
                 ))}
               </div>
             </div>
-            
+
             {/* Grid */}
-            <motion.div 
+            <motion.div
               layout
               className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-16"
             >
               <AnimatePresence mode="popLayout">
                 {filteredFabrics.map((product) => (
-                  <motion.div 
+                  <motion.div
                     layout
-                    key={product.id} 
+                    key={product.id}
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, scale: 0.95 }}
@@ -270,13 +280,13 @@ export default function FabricsContent() {
                     onClick={() => setSelectedFabric(product)}
                   >
                     <div className="aspect-[3/4] bg-card mb-8 overflow-hidden rounded-sm relative shadow-2xl border border-border/40 group-hover:border-primary/40 transition-all duration-500">
-                      <img 
+                      <img
                         src={product.img}
-                        alt={product.name} 
-                        className="w-full h-full object-cover transition-transform duration-[2.2s] ease-out group-hover:scale-105 filter contrast-[1.08] brightness-95" 
+                        alt={product.name}
+                        className="w-full h-full object-cover transition-transform duration-[2.2s] ease-out group-hover:scale-105 filter contrast-[1.08] brightness-95"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/10 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500" />
-                      
+
                       {/* Swatch Stats Preview */}
                       <div className="absolute top-4 left-4 glass py-1 px-3 rounded-full text-[9px] uppercase tracking-widest font-semibold text-primary">
                         {product.weight}
@@ -291,7 +301,7 @@ export default function FabricsContent() {
                     </div>
                     <h3 className="text-2xl font-heading mb-2 text-foreground group-hover:text-primary transition-colors tracking-wide drop-shadow-sm">{product.name}</h3>
                     <p className="text-sm text-primary font-heading tracking-wide">
-                      {product.price} 
+                      {product.price}
                       <span className="text-[10px] uppercase tracking-widest ml-1 text-secondary-text/40">/ meter</span>
                     </p>
                   </motion.div>
@@ -305,14 +315,14 @@ export default function FabricsContent() {
         {/* IMAGE DETAILS REVEAL MODAL */}
         <AnimatePresence>
           {selectedFabric && (
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-background/90 backdrop-blur-md"
               onClick={() => setSelectedFabric(null)}
             >
-              <motion.div 
+              <motion.div
                 initial={{ scale: 0.9, y: 20 }}
                 animate={{ scale: 1, y: 0 }}
                 exit={{ scale: 0.9, y: 20 }}
@@ -321,7 +331,7 @@ export default function FabricsContent() {
                 onClick={(e) => e.stopPropagation()}
               >
                 {/* Close Button */}
-                <button 
+                <button
                   onClick={() => setSelectedFabric(null)}
                   className="absolute top-4 right-4 z-20 w-10 h-10 rounded-full bg-card/60 border border-border/40 flex items-center justify-center text-foreground hover:text-primary hover:border-primary transition-colors glass cursor-pointer"
                 >
@@ -330,13 +340,13 @@ export default function FabricsContent() {
 
                 {/* Left Side: Zoomed High-Resolution Image */}
                 <div className="relative aspect-[4/5] md:aspect-auto h-full bg-black">
-                  <img 
-                    src={selectedFabric.img} 
-                    alt={selectedFabric.name} 
+                  <img
+                    src={selectedFabric.img}
+                    alt={selectedFabric.name}
                     className="w-full h-full object-cover filter contrast-[1.1] brightness-95"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20" />
-                  
+
                   <div className="absolute bottom-8 left-8">
                     <span className="text-xs uppercase tracking-widest text-primary font-semibold mb-2 block">{selectedFabric.composition}</span>
                     <h2 className="text-3xl font-heading text-white">{selectedFabric.name}</h2>
@@ -349,7 +359,7 @@ export default function FabricsContent() {
                     <span className="text-[10px] uppercase tracking-widest text-primary/70 font-semibold font-sans border-b border-primary/20 pb-1 mb-6 inline-block">
                       Technical Specifications
                     </span>
-                    
+
                     <h3 className="text-3xl font-heading text-foreground mb-4 tracking-wide">{selectedFabric.name}</h3>
                     <p className="text-secondary-text font-light leading-relaxed text-sm mb-8">
                       {selectedFabric.details}
@@ -384,7 +394,7 @@ export default function FabricsContent() {
                     </div>
 
                     <div className="flex gap-4 pt-2">
-                      <Link 
+                      <Link
                         href={`/custom-tailoring?fabric=${selectedFabric.id}`}
                         onClick={() => setSelectedFabric(null)}
                         className="flex-grow bg-primary text-background hover:text-foreground hover:bg-primary-hover font-semibold text-center uppercase tracking-widest text-xs py-4 transition-colors duration-300 flex items-center justify-center gap-2"
@@ -392,7 +402,7 @@ export default function FabricsContent() {
                         Design Custom Shirt
                         <Ruler size={13} />
                       </Link>
-                      
+
                       <a
                         href={`https://wa.me/919944944255?text=Hello%20Vian%20Luxure,%20I%20am%20interested%20in%20fabric%20swatch%20${encodeURIComponent(selectedFabric.name)}`}
                         target="_blank"
@@ -413,7 +423,7 @@ export default function FabricsContent() {
         {/* WHY CHOOSE OUR FABRICS */}
         <section className="py-32 px-6 border-y border-border/40 bg-card/25 backdrop-blur-md">
           <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-16 items-center">
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, x: -40 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
@@ -424,8 +434,8 @@ export default function FabricsContent() {
                 <div className="absolute inset-0 bg-black/20" />
               </div>
             </motion.div>
-            
-            <motion.div 
+
+            <motion.div
               initial={{ opacity: 0, x: 40 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
@@ -438,7 +448,7 @@ export default function FabricsContent() {
                   VL Global works strictly with organic, premium European flax fibers and Egyptian long-staple cottons. Every thread represents comfort, simplicity, and natural living.
                 </p>
               </div>
-              
+
               <div className="space-y-8">
                 {[
                   { n: "01", t: "Pure Linen Fabric", d: "European premium 70 lea pure linen fabric designed for breathable wear and natural texture." },
@@ -461,13 +471,24 @@ export default function FabricsContent() {
         </section>
 
         {/* CUSTOMER STORIES */}
-        <section className="py-32 px-6">
-          <div className="max-w-7xl mx-auto">
+        <section className="py-32 px-6 relative overflow-hidden">
+          {/* Atelier Tailoring Background */}
+          <div className="absolute inset-0 z-0 pointer-events-none">
+            <img
+              src="/assets/fabrics_reviews_bg.png"
+              alt="Bespoke linen atelier background"
+              className={`w-full h-full object-cover transition-all duration-700 ${isLight ? "opacity-[0.28] brightness-105" : "opacity-[0.42] brightness-[0.4]"
+                }`}
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-background/20 via-background/35 to-background" />
+          </div>
+
+          <div className="max-w-7xl mx-auto relative z-10">
             <div className="text-center mb-20">
               <p className="text-primary tracking-[0.3em] uppercase text-xs mb-4 font-semibold">Reviews</p>
               <h2 className="text-4xl md:text-5xl font-heading tracking-wide text-foreground">Customer Stories</h2>
             </div>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {testimonials.map((t, i) => (
                 <motion.div
@@ -500,25 +521,38 @@ export default function FabricsContent() {
         {/* FAQ SECTION */}
         <section className="py-24 px-6 max-w-6xl mx-auto border-t border-border/40">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20">
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="bg-card p-12 md:p-16 rounded-sm text-foreground flex flex-col justify-between h-full border border-border/40 shadow-2xl relative"
+              className="bg-card p-12 md:p-16 rounded-sm text-foreground flex flex-col justify-between h-full border border-border/40 shadow-2xl relative overflow-hidden"
             >
-              <div>
-                <p className="text-xs font-semibold tracking-[0.15em] text-secondary-text mb-8 uppercase">FAQ Journal</p>
-                <h2 className="text-4xl md:text-5xl font-heading font-bold leading-[1.15] mb-8 text-foreground tracking-wide">
-                  Fabric<br />Essentials &<br />Knowledge
-                </h2>
-                <div className="w-12 h-1 bg-primary mb-8" />
+              {/* Editorial Linen Background Texture */}
+              <div className="absolute inset-0 z-0 pointer-events-none">
+                <img
+                  src="/assets/fabrics_hero_bg.png"
+                  alt="Editorial linen background"
+                  className={`w-full h-full object-cover transition-all duration-700 ${isLight ? "opacity-[0.16] brightness-105" : "opacity-[0.25] brightness-50"
+                    }`}
+                />
+                <div className="absolute inset-0 bg-gradient-to-tr from-card/40 via-card/80 to-card/55" />
               </div>
-              <p className="text-[9px] font-semibold tracking-[0.3em] text-secondary-text uppercase mt-12">
-                Vian Luxure • Linen Experts
-              </p>
+
+              <div className="relative z-10 flex flex-col justify-between h-full">
+                <div>
+                  <p className="text-xs font-semibold tracking-[0.15em] text-secondary-text mb-8 uppercase">FAQ Journal</p>
+                  <h2 className="text-4xl md:text-5xl font-heading font-bold leading-[1.15] mb-8 text-foreground tracking-wide">
+                    Fabric<br />Essentials &<br />Knowledge
+                  </h2>
+                  <div className="w-12 h-1 bg-primary mb-8" />
+                </div>
+                <p className="text-[9px] font-semibold tracking-[0.3em] text-secondary-text uppercase mt-12">
+                  Vian Luxure • Linen Experts
+                </p>
+              </div>
             </motion.div>
 
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
@@ -526,13 +560,12 @@ export default function FabricsContent() {
             >
               {faqs.map((faq, i) => (
                 <div key={i} className="border-b border-border/40 overflow-hidden">
-                  <button 
+                  <button
                     onClick={() => setActiveFaq(activeFaq === i ? null : i)}
                     className="w-full py-6 flex items-center justify-between text-left focus:outline-none group cursor-pointer"
                   >
-                    <span className={`text-lg font-heading group-hover:text-primary transition-colors tracking-wide ${
-                      activeFaq === i ? "text-primary" : "text-foreground"
-                    }`}>{faq.q}</span>
+                    <span className={`text-lg font-heading group-hover:text-primary transition-colors tracking-wide ${activeFaq === i ? "text-primary" : "text-foreground"
+                      }`}>{faq.q}</span>
                     <span className="text-secondary-text group-hover:text-primary transition-colors ml-4 shrink-0">
                       {activeFaq === i ? <Minus size={18} strokeWidth={1.5} /> : <Plus size={18} strokeWidth={1.5} />}
                     </span>
@@ -559,15 +592,26 @@ export default function FabricsContent() {
 
         {/* BOTTOM CALL TO ACTION */}
         <section className="py-24 px-6">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, scale: 0.97 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="max-w-6xl mx-auto bg-primary rounded-sm p-12 md:p-16 relative overflow-hidden shadow-[0_20px_50px_rgba(212,175,55,0.2)]"
+            className="max-w-6xl mx-auto bg-[#A3864E] rounded-sm p-12 md:p-16 relative overflow-hidden shadow-[0_20px_50px_rgba(212,175,55,0.2)]"
           >
+            {/* Premium Linen Clothing Background */}
+            <div className="absolute inset-0 z-0 pointer-events-none">
+              <img
+                src="/assets/fabrics_cta_bg.png"
+                alt="Premium linen clothing background"
+                className="w-full h-full object-cover opacity-[0.45] filter brightness-90 contrast-[1.1]"
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-[#8E7037]/85 via-[#A3864E]/75 to-[#B5985E]/65 mix-blend-multiply" />
+            </div>
+
             {/* Woven pattern decoration overlay */}
-            <div className="absolute inset-0 opacity-15 bg-[url('https://www.transparenttextures.com/patterns/woven-light.png')] mix-blend-multiply pointer-events-none" />
+            <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/woven-light.png')] mix-blend-multiply pointer-events-none z-0" />
+
             <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-12">
               <div className="md:w-2/3">
                 <h2 className="text-4xl md:text-5xl font-heading text-background mb-6 leading-tight tracking-wide">
