@@ -30,7 +30,7 @@ const steps = [
 
 export default function TailoringProcess() {
   return (
-    <section className="py-32 bg-background border-t border-white/5">
+    <section className="py-32 bg-background border-t border-border/40 transition-colors duration-500">
       <div className="container mx-auto px-6 md:px-12">
         <div className="text-center mb-24">
           <motion.h2
@@ -46,7 +46,7 @@ export default function TailoringProcess() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-4xl md:text-5xl font-heading mb-6 tracking-wide"
+            className="text-4xl md:text-5xl font-heading mb-6 tracking-wide text-foreground"
           >
             How It Works
           </motion.p>
@@ -55,9 +55,9 @@ export default function TailoringProcess() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="text-muted-foreground text-lg italic font-heading max-w-2xl mx-auto"
+            className="text-secondary-text text-lg italic font-heading max-w-2xl mx-auto"
           >
-            "It Doesn't Just Fit. It Understands You."
+            &ldquo;It Doesn&apos;t Just Fit. It Understands You.&rdquo;
           </motion.p>
         </div>
 
@@ -78,12 +78,12 @@ export default function TailoringProcess() {
                   className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 filter grayscale group-hover:grayscale-0"
                 />
                 <div className="absolute inset-0 bg-black/40 group-hover:bg-black/10 transition-colors duration-500" />
-                <div className="absolute -top-4 -left-4 w-16 h-16 bg-primary text-black font-heading text-2xl flex items-center justify-center rounded-sm shadow-xl z-10 transition-transform group-hover:-translate-y-2 group-hover:-translate-x-2">
+                <div className="absolute -top-4 -left-4 w-16 h-16 bg-primary text-background font-heading text-2xl flex items-center justify-center rounded-sm shadow-xl z-10 transition-transform group-hover:-translate-y-2 group-hover:-translate-x-2 font-bold">
                   {step.num}
                 </div>
               </div>
-              <h3 className="text-xl font-heading mb-4 tracking-wide">{step.title}</h3>
-              <p className="text-muted-foreground text-sm font-light leading-relaxed">
+              <h3 className="text-xl font-heading mb-4 tracking-wide text-foreground">{step.title}</h3>
+              <p className="text-secondary-text text-sm font-light leading-relaxed">
                 {step.desc}
               </p>
             </motion.div>

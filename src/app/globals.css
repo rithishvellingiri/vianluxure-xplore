@@ -4,48 +4,93 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
+  --color-primary-hover: var(--primary-hover);
+  --color-secondary-text: var(--secondary-text);
   --color-border: var(--border);
+  --color-card: var(--card-bg);
 
   --font-heading: var(--font-playfair);
   --font-sans: var(--font-inter);
 }
 
-:root {
-  --background: #050505;
-  --foreground: #fafafa;
+/* Default / Light Linen Theme */
+:root, .theme-light-linen {
+  --background: #FAF7F2;
+  --foreground: #2C2C2C;
+  --primary: #C9A86A;
+  --primary-hover: #B8924F;
+  --secondary-text: #6B6B6B;
+  --border: #E8DFD0;
+  --card-bg: #FFFFFF;
   
-  --primary: #d4af37;
-  --primary-foreground: #000000;
+  --glass-bg: rgba(255, 255, 255, 0.45);
+  --glass-border: rgba(201, 168, 106, 0.15);
+  --bg-gradient: linear-gradient(to bottom, rgba(250, 247, 242, 0.95), rgba(250, 247, 242, 0.90), rgba(250, 247, 242, 0.96));
   
-  --secondary: #111111;
-  --secondary-foreground: #ffffff;
+  --text-gradient-start: #2C2C2C;
+  --text-gradient-end: #C9A86A;
   
-  --accent: #222222;
-  --accent-foreground: #ffffff;
+  --shadow-sm: 0 2px 8px rgba(201, 168, 106, 0.05);
+  --shadow-md: 0 8px 24px rgba(201, 168, 106, 0.08);
+  --shadow-lg: 0 16px 40px rgba(201, 168, 106, 0.12);
+  --input-bg: #FFFFFF;
+}
+
+/* Premium Gold Theme */
+.theme-premium-gold {
+  --background: #1F1A13;
+  --foreground: #F5ECE1;
+  --primary: #D4AF37;
+  --primary-hover: #EBC34B;
+  --secondary-text: #C5B49E;
+  --border: #3C3224;
+  --card-bg: #2A2218;
   
-  --muted: #1a1a1a;
-  --muted-foreground: #b3b3b3;
+  --glass-bg: rgba(42, 34, 24, 0.45);
+  --glass-border: rgba(212, 175, 55, 0.15);
+  --bg-gradient: linear-gradient(to bottom, rgba(31, 26, 19, 0.96), rgba(42, 34, 24, 0.93), rgba(31, 26, 19, 0.97));
   
-  --border: #2a2a2a;
+  --text-gradient-start: #F5ECE1;
+  --text-gradient-end: #D4AF37;
+  
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.35);
+  --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.5);
+  --input-bg: #221C14;
+}
+
+/* Luxury Dark Theme */
+.theme-luxury-dark {
+  --background: #0A0A0A;
+  --foreground: #FFFFFF;
+  --primary: #C9A86A;
+  --primary-hover: #B8924F;
+  --secondary-text: #A3A3A3;
+  --border: #1E1E1E;
+  --card-bg: #121212;
+  
+  --glass-bg: rgba(18, 18, 18, 0.45);
+  --glass-border: rgba(255, 255, 255, 0.06);
+  --bg-gradient: linear-gradient(to bottom, rgba(10, 10, 10, 0.96), rgba(18, 18, 18, 0.93), rgba(10, 10, 10, 0.97));
+  
+  --text-gradient-start: #FFFFFF;
+  --text-gradient-end: #C9A86A;
+  
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.7);
+  --input-bg: #161616;
 }
 
 body {
   background-color: var(--background);
-  /* Dark luxury overlay blending with the premium linen texture image */
   background-image: 
-    linear-gradient(to bottom, rgba(5,5,5,0.93), rgba(20,20,20,0.88), rgba(5,5,5,0.96)),
+    var(--bg-gradient),
     url("/assets/premium-linen-bg.jpg");
-  background-size: 150%;
+  background-size: 100%;
   background-repeat: repeat;
   background-attachment: fixed;
-  animation: panLinen 60s ease-in-out infinite alternate;
+  animation: panLinen 90s ease-in-out infinite alternate;
   color: var(--foreground);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
@@ -57,7 +102,7 @@ body {
     background-position: 0% 0%;
   }
   100% {
-    background-position: 100% 100%;
+    background-position: 50% 50%;
   }
 }
 
@@ -66,14 +111,14 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @utility glass {
-  background: rgba(15, 15, 15, 0.4);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
 }
 
 @utility text-gradient {
-  background: linear-gradient(to right, #ffffff, #d4af37);
+  background: linear-gradient(to right, var(--text-gradient-start), var(--text-gradient-end));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
