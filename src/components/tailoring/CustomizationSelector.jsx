@@ -7,11 +7,12 @@ import { useTheme } from "@/components/theme/ThemeProvider";
 
 const options = {
   fabric: [
-    { id: "fab-1", name: "Pure White Premium Linen", img: "/assets/custom-white-linen.jpg", price: "₹1,499", composition: "100% Pure Flax" },
-    { id: "fab-2", name: "Midnight Navy Cotton", img: "/assets/custom-navy-cotton.jpg", price: "₹1,299", composition: "80% Cotton / 20% Linen" },
-    { id: "fab-3", name: "Olive Green Rustic Linen", img: "/assets/custom-olive-linen.jpg", price: "₹1,699", composition: "100% Pure Flax" },
-    { id: "fab-4", name: "Sky Blue Oxford", img: "/assets/custom-sky-oxford.jpg", price: "₹1,499", composition: "100% Egyptian Cotton" },
-    { id: "fab-5", name: "Charcoal Textured Blend", img: "/assets/custom-charcoal.jpg", price: "₹1,899", composition: "60% Linen / 40% Cotton" }
+    { id: "fab-1", name: "Pure White Premium Linen", img: "/assets/pure white premium linen.jpg", price: "₹1,499", composition: "100% Pure Flax" },
+    { id: "fab-2", name: "Midnight Navy Cotton", img: "/assets/Cavallo by Linen Club  Cotton Linen Solids Shirting Fabric (Dark Navy Blue).jpg", price: "₹1,299", composition: "80% Cotton / 20% Linen" },
+    { id: "fab-3", name: "Olive Green Rustic Linen", img: "/assets/Buy Absoluto Men's Terry Rayon Solids Unstitched Suiting Fabric (Olive Green) Online _ The Libas Store.jpg", price: "₹1,699", composition: "100% Pure Flax" },
+    { id: "fab-4", name: "Sky Blue Oxford", img: "/assets/Buy Cadini Men's Bamboo Micro Structured Unstitched Shirting Fabric (Sky Blue) Online _ The Libas Store.jpg", price: "₹1,499", composition: "100% Egyptian Cotton" },
+    { id: "fab-5", name: "Charcoal Textured Blend", img: "/assets/Хлопок Костюмный серый производитель Италия артикул 2950 купить оптом и в розницу.jpg", price: "₹1,899", composition: "60% Linen / 40% Cotton" },
+    { id: "fab-6", name: "Desert Sand Pure Linen", img: "/assets/Lino Shot Linen in Natural - The Confident Stitch.jpg", price: "₹1,499", composition: "100% Pure Flax" }
   ],
   fit: ["Slim Fit", "Regular Fit", "Relaxed Fit"],
   collar: ["Classic Collar", "Spread Collar", "Button Down Collar", "Mandarin Collar", "Cutaway Collar"],

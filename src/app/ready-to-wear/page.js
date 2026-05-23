@@ -6,14 +6,14 @@ import { useTheme } from "@/components/theme/ThemeProvider";
 
 // Crawled ready to wear shirts collection
 const shirts = [
-  { id: "rtw-1", name: "Classic White Linen", price: "₹2,499", img: "/assets/rtw-1.jpg", type: "linen", tag: "Pure Flax", composition: "100% European Linen", fit: "Regular Fit" },
-  { id: "rtw-2", name: "Navy Blue Everyday Fit", price: "₹2,199", img: "/assets/rtw-2.jpg", type: "blend", tag: "Premium Blend", composition: "80% Cotton / 20% Linen", fit: "Slim Fit" },
-  { id: "rtw-3", name: "Olive Green Relaxed", price: "₹2,699", img: "/assets/rtw-3.jpg", type: "linen", tag: "Garment Washed", composition: "100% Linen", fit: "Relaxed Fit" },
-  { id: "rtw-4", name: "Sky Blue Cotton Blend", price: "₹2,299", img: "/assets/rtw-4.jpg", type: "cotton", tag: "Easy Iron", composition: "90% Cotton / 10% Linen", fit: "Regular Fit" },
-  { id: "rtw-5", name: "Charcoal Evening Shirt", price: "₹2,899", img: "/assets/rtw-5.jpg", type: "linen", tag: "Signature", composition: "100% European Linen", fit: "Slim Fit" },
-  { id: "rtw-6", name: "Desert Sand Safari", price: "₹2,499", img: "/assets/rtw-6.jpg", type: "linen", tag: "Utility Classic", composition: "100% Linen", fit: "Regular Fit" },
-  { id: "rtw-7", name: "Crimson Red Linen", price: "₹2,599", img: "/assets/rtw-7.jpg", type: "linen", tag: "Celebration Special", composition: "100% Pure Linen", fit: "Regular Fit" },
-  { id: "rtw-8", name: "Slate Grey Essential", price: "₹2,199", img: "/assets/rtw-8.jpg", type: "blend", tag: "Minimalist", composition: "70% Cotton / 30% Linen", fit: "Regular Fit" }
+  { id: "rtw-1", name: "Classic White Linen", price: "₹2,499", img: "/assets/Relaxed Linen Shirt _ Bradic.jpg", type: "linen", tag: "Pure Flax", composition: "100% European Linen", fit: "Regular Fit" },
+  { id: "rtw-2", name: "Navy Blue Everyday Fit", price: "₹2,199", img: "/assets/navy blue shirt.jpg", type: "blend", tag: "Premium Blend", composition: "80% Cotton / 20% Linen", fit: "Slim Fit" },
+  { id: "rtw-3", name: "Olive Green Relaxed", price: "₹2,699", img: "/assets/Men's linen button-up shirts, made in Italy _ Velasca.jpg", type: "linen", tag: "Garment Washed", composition: "100% Linen", fit: "Relaxed Fit" },
+  { id: "rtw-4", name: "Sky Blue Cotton Blend", price: "₹2,299", img: "/assets/Mens Cotton & Linen Solid Color Thin Casual Long Sleeve Shirts With Pocket-shirt designs for men.jpg", type: "cotton", tag: "Easy Iron", composition: "90% Cotton / 10% Linen", fit: "Regular Fit" },
+  { id: "rtw-5", name: "Charcoal Evening Shirt", price: "₹2,899", img: "/assets/Classic Linen Summer Shirt.jpg", type: "linen", tag: "Signature", composition: "100% European Linen", fit: "Slim Fit" },
+  { id: "rtw-6", name: "Desert Sand Safari", price: "₹2,499", img: "/assets/Richie Shirt - Desert Sand.jpg", type: "linen", tag: "Utility Classic", composition: "100% Linen", fit: "Regular Fit" },
+  { id: "rtw-7", name: "Crimson Red Linen", price: "₹2,599", img: "/assets/crimson red shirt.jpg", type: "linen", tag: "Celebration Special", composition: "100% Pure Linen", fit: "Regular Fit" },
+  { id: "rtw-8", name: "Slate Grey Essential", price: "₹2,199", img: "/assets/StudioSuits- European Haze Purple Linen Shirt.jpg", type: "blend", tag: "Minimalist", composition: "70% Cotton / 30% Linen", fit: "Regular Fit" }
 ];
 
 // Crawled customer reviews for ready-to-wear

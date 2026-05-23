@@ -6,25 +6,25 @@ const steps = [
     num: "01",
     title: "Select Your Fit",
     desc: "Our process begins not with a tape measure, but with a conversation. We account for every nuance.",
-    img: "/assets/process-1.jpg"
+    img: "/assets/rtw-3.jpg"
   },
   {
     num: "02",
     title: "Add Details",
     desc: "Tailoring fixes the mismatch between an 'off-the-rack' garment and your actual physique.",
-    img: "/assets/process-2.jpg"
+    img: "/assets/Classical minimalism.jpg"
   },
   {
     num: "03",
     title: "Choose Fabric",
     desc: "Select from our premium range of breathable linen and soft cottons.",
-    img: "/assets/process-3.jpg"
+    img: "/assets/TheZanHouse - Etsy.jpg"
   },
   {
     num: "04",
     title: "Craft & Deliver",
     desc: "Your custom garment is meticulously crafted and delivered, ready to wear.",
-    img: "/assets/process-4.jpg"
+    img: "/assets/retreat polo linen short sleeve shirt เสื้อโปโลรีทรีทลินินแขนสั้น__฿2,690_S M L XL XXL__one piece collar ปกชิ้นเดียว_takase shell buttons กระดุมเปลือกหอย_triangle gusset สามเหลี่ยมข้าง_double-stitched sea.jpg"
   }
 ];
 

@@ -33,7 +33,7 @@ export default function AboutContent() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
-            className="text-4xl md:text-6xl lg:text-7xl font-heading mb-6 tracking-wide drop-shadow-xl"
+            className="text-4xl md:text-6xl lg:text-7xl font-heading mb-6 tracking-wide drop-shadow-xl text-white"
           >
             Made Around Natural <br /><span className="italic font-light text-primary">Linen Fabrics</span>
           </motion.h1>

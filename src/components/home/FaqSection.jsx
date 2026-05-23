@@ -29,18 +29,14 @@ const faqs = [
 export default function FaqSection() {
   const [openIndex, setOpenIndex] = useState(null);
   const { theme, mounted } = useTheme();
-
   const isLight = mounted && theme === "light-linen";
   const isInvertedClass = isLight ? "" : "invert";
 
-  const toggle = (idx) => {
-    setOpenIndex(openIndex === idx ? null : idx);
-  };
+  const toggle = (idx) => setOpenIndex(openIndex === idx ? null : idx);
 
   return (
     <section className="py-32 bg-card/25 relative border-t border-border/40" id="faq-section">
       <div className="container mx-auto px-6 md:px-12 max-w-4xl">
-        
         {/* Title */}
         <div className="text-center mb-24">
           <p className="text-primary tracking-[0.3em] uppercase text-xs mb-4 font-semibold">
@@ -52,16 +48,22 @@ export default function FaqSection() {
         </div>
 
         {/* FAQ Accordion List */}
-        <div className="space-y-4">
+        <div className="space-y-6">
           {faqs.map((faq, idx) => {
             const isOpen = openIndex === idx;
+
             return (
-              <div 
+              <motion.div
                 key={idx}
-                className={`border rounded-sm transition-colors duration-500 overflow-hidden ${
-                  isOpen 
-                    ? "border-primary/30 bg-card/60" 
-                    : "border-border/40 bg-card/25 hover:border-border/80"
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: idx * 0.12 }}
+                whileHover={{ y: -4 }}
+                className={`border rounded-sm overflow-hidden transition-all duration-500 ${
+                  isOpen
+                    ? "border-primary/40 bg-card/70 shadow-lg shadow-primary/10"
+                    : "border-border/40 bg-card/25 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/10 hover:scale-[1.01]"
                 }`}
               >
                 {/* Trigger */}
@@ -70,30 +72,38 @@ export default function FaqSection() {
                   className="w-full px-8 py-6 text-left flex items-center justify-between gap-6 cursor-pointer focus:outline-none"
                   aria-expanded={isOpen}
                 >
-                  <span className={`text-base md:text-lg font-heading tracking-wide transition-colors ${
-                    isOpen ? "text-primary" : "text-foreground"
-                  }`}>
-                    {faq.q}
-                  </span>
-                  
-                  {/* Local SVG Toggle Icon */}
-                  <span className="shrink-0 flex items-center justify-center w-8 h-8 rounded-full border border-border/40 glass group">
-                    <img 
-                      src={isOpen ? "/icons/accordion-close.svg" : "/icons/accordion-open.svg"} 
-                      alt={isOpen ? "Close" : "Open"}
-                      className={`w-3.5 h-3.5 transition-transform duration-500 group-hover:rotate-180 ${isInvertedClass}`} 
+                  <div className="flex flex-col flex-1">
+                    <span className={`text-base md:text-lg font-heading tracking-wide transition-colors ${
+                      isOpen ? "text-primary" : "text-foreground"
+                    }`}>
+                      {faq.q}
+                    </span>
+                    {/* Gold underline animation */}
+                    <div
+                      className={`h-[1px] bg-primary mt-2 transition-all duration-500 ${
+                        isOpen ? "w-full" : "w-0"
+                      }`}
                     />
-                  </span>
+                  </div>
+
+                  {/* Toggle Icon */}
+                  <motion.img
+                    src={isOpen ? "/icons/accordion-close.svg" : "/icons/accordion-open.svg"}
+                    alt={isOpen ? "Close" : "Open"}
+                    animate={{ rotate: isOpen ? 180 : 0, scale: isOpen ? 1.15 : 1 }}
+                    transition={{ duration: 0.4 }}
+                    className={`w-3.5 h-3.5 ${isInvertedClass}`}
+                  />
                 </button>
 
-                {/* Content Block */}
+                {/* Answer */}
                 <AnimatePresence initial={false}>
                   {isOpen && (
                     <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.4, ease: [0.25, 1, 0.5, 1] }}
+                      initial={{ height: 0, opacity: 0, y: -10 }}
+                      animate={{ height: "auto", opacity: 1, y: 0 }}
+                      exit={{ height: 0, opacity: 0, y: -10 }}
+                      transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
                     >
                       <div className="px-8 pb-8 pt-2 text-sm text-secondary-text font-light leading-relaxed border-t border-border/40">
                         {faq.a}
@@ -101,11 +111,10 @@ export default function FaqSection() {
                     </motion.div>
                   )}
                 </AnimatePresence>
-              </div>
+              </motion.div>
             );
           })}
         </div>
-
       </div>
     </section>
   );

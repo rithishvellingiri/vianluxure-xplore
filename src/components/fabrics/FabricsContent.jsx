@@ -11,7 +11,7 @@ const fabricProducts = [
     name: "Pure White Premium Linen",
     price: "₹1,499",
     type: "linen",
-    img: "/assets/fabric-1.jpg",
+    img: "/assets/pure white premium linen.jpg",
     details: "European premium 70 lea pure linen fabric designed for breathable wear and natural texture. Crisp, structured, and luxurious.",
     weight: "135 GSM",
     composition: "100% Pure Flax",
@@ -23,7 +23,7 @@ const fabricProducts = [
     name: "Midnight Navy Cotton",
     price: "₹1,299",
     type: "cotton",
-    img: "/assets/fabric-2.jpg",
+    img: "/assets/Cavallo by Linen Club  Cotton Linen Solids Shirting Fabric (Dark Navy Blue).jpg",
     details: "Balanced cotton and linen fibers created for soft texture and comfortable everyday use. Highly durable and rich in color deepness.",
     weight: "120 GSM",
     composition: "80% Cotton / 20% Linen",
@@ -35,7 +35,7 @@ const fabricProducts = [
     name: "Olive Green Rustic Linen",
     price: "₹1,699",
     type: "linen",
-    img: "/assets/fabric-3.jpg",
+    img: "/assets/Buy Absoluto Men's Terry Rayon Solids Unstitched Suiting Fabric (Olive Green) Online _ The Libas Store.jpg",
     details: "Textured linen fibers dyed in an organic earthy olive tone. High breathability with gorgeous rustic drape characteristics.",
     weight: "140 GSM",
     composition: "100% Pure Flax",
@@ -47,7 +47,7 @@ const fabricProducts = [
     name: "Sky Blue Oxford",
     price: "₹1,499",
     type: "cotton",
-    img: "/assets/fabric-4.jpg",
+    img: "/assets/Buy Cadini Men's Bamboo Micro Structured Unstitched Shirting Fabric (Sky Blue) Online _ The Libas Store.jpg",
     details: "A classic oxford weave with sky blue warp and white weft threads. Excellent regular everyday shirting choice.",
     weight: "115 GSM",
     composition: "100% Egyptian Cotton",
@@ -59,7 +59,7 @@ const fabricProducts = [
     name: "Charcoal Textured Blend",
     price: "₹1,899",
     type: "blends",
-    img: "/assets/fabric-5.jpg",
+    img: "/assets/Хлопок Костюмный серый производитель Италия артикул 2950 купить оптом и в розницу.jpg",
     details: "Intricately woven dark charcoal fibers offering subtle tone variations. Ideal for relaxed unstructured summer tailoring.",
     weight: "130 GSM",
     composition: "60% Linen / 40% Cotton",
@@ -71,7 +71,7 @@ const fabricProducts = [
     name: "Desert Sand Pure Linen",
     price: "₹1,499",
     type: "linen",
-    img: "/assets/fabric-6.jpg",
+    img: "/assets/Lino Shot Linen in Natural - The Confident Stitch.jpg",
     details: "Soft beige pure linen reflecting desert organic aesthetics. Breathable, lightweight, and perfect for resort wear or casual shirts.",
     weight: "125 GSM",
     composition: "100% Pure Flax",
@@ -430,7 +430,7 @@ export default function FabricsContent() {
               className="lg:w-1/2"
             >
               <div className="aspect-[4/5] max-w-md mx-auto rounded-sm overflow-hidden border border-border/40 shadow-2xl relative">
-                <img src="/assets/cat-1.jpg" className="w-full h-full object-cover filter contrast-[1.1] brightness-90" alt="Our Fabrics" />
+                <img src="/assets/download.jpg" className="w-full h-full object-cover filter contrast-[1.1] brightness-90" alt="Our Fabrics" />
                 <div className="absolute inset-0 bg-black/20" />
               </div>
             </motion.div>

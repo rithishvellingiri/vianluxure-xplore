@@ -40,7 +40,7 @@ export default function WhyChooseUs() {
           >
             <div className="aspect-[4/5] rounded-sm overflow-hidden border border-border/40 shadow-2xl relative">
               <img 
-                src="/assets/cat-1.jpg" 
+                src="/assets/Tissu coloré uni, composition palette de couleurs douces.jpg" 
                 className="w-full h-full object-cover filter contrast-110 brightness-[0.85]" 
                 alt="Premium Linen Craft" 
               />

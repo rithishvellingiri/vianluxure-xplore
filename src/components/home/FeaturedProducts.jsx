@@ -6,14 +6,14 @@ import { ShoppingBag, Eye, Heart } from "lucide-react";
 import { useTheme } from "@/components/theme/ThemeProvider";
 
 const products = [
-  { id: "rtw-1", name: "Classic White Linen", price: "₹2,499", type: "linen", img: "/assets/rtw-1.jpg", rating: 5, tag: "Best Seller" },
-  { id: "rtw-2", name: "Navy Blue Everyday Fit", price: "₹2,199", type: "blend", img: "/assets/rtw-2.jpg", rating: 4, tag: "Essential" },
-  { id: "rtw-3", name: "Olive Green Relaxed", price: "₹2,699", type: "linen", img: "/assets/rtw-3.jpg", rating: 5, tag: "Signature" },
-  { id: "rtw-4", name: "Sky Blue Cotton Blend", price: "₹2,299", type: "blend", img: "/assets/rtw-4.jpg", rating: 4, tag: "Classic" },
-  { id: "rtw-5", name: "Charcoal Evening Shirt", price: "₹2,899", type: "linen", img: "/assets/rtw-5.jpg", rating: 5, tag: "Premium" },
-  { id: "rtw-6", name: "Desert Sand Safari", price: "₹2,499", type: "linen", img: "/assets/rtw-6.jpg", rating: 4, tag: "Utility" },
-  { id: "rtw-7", name: "Crimson Red Linen", price: "₹2,599", type: "linen", img: "/assets/rtw-7.jpg", rating: 5, tag: "Festive" },
-  { id: "rtw-8", name: "Slate Grey Essential", price: "₹2,199", type: "blend", img: "/assets/rtw-8.jpg", rating: 4, tag: "Minimalist" }
+  { id: "rtw-1", name: "Classic White Linen", price: "₹2,499", type: "linen", img: "/assets/Relaxed Linen Shirt _ Bradic.jpg", rating: 5, tag: "Best Seller" },
+  { id: "rtw-2", name: "Navy Blue Everyday Fit", price: "₹2,199", type: "blend", img: "/assets/navy blue shirt.jpg", rating: 4, tag: "Essential" },
+  { id: "rtw-3", name: "Olive Green Relaxed", price: "₹2,699", type: "linen", img: "/assets/Men's linen button-up shirts, made in Italy _ Velasca.jpg", rating: 5, tag: "Signature" },
+  { id: "rtw-4", name: "Sky Blue Cotton Blend", price: "₹2,299", type: "blend", img: "/assets/Mens Cotton & Linen Solid Color Thin Casual Long Sleeve Shirts With Pocket-shirt designs for men.jpg", rating: 4, tag: "Classic" },
+  { id: "rtw-5", name: "Charcoal Evening Shirt", price: "₹2,899", type: "linen", img: "/assets/Classic Linen Summer Shirt.jpg", rating: 5, tag: "Premium" },
+  { id: "rtw-6", name: "Desert Sand Safari", price: "₹2,499", type: "linen", img: "/assets/Richie Shirt - Desert Sand.jpg", rating: 4, tag: "Utility" },
+  { id: "rtw-7", name: "Crimson Red Linen", price: "₹2,599", type: "linen", img: "/assets/crimson red shirt.jpg", rating: 5, tag: "Festive" },
+  { id: "rtw-8", name: "Slate Grey Essential", price: "₹2,199", type: "blend", img: "/assets/StudioSuits- European Haze Purple Linen Shirt.jpg", rating: 4, tag: "Minimalist" }
 ];
 
 const containerVariants = {

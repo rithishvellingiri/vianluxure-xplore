@@ -11,7 +11,7 @@ const categories = [
     desc: "Explore pure linen and cotton fabrics designed for breathability, natural texture, and everyday wear, with lightweight finishes and timeless detailing suited for modern wardrobes.",
     btn: "Explore Fabrics",
     href: "/fabrics",
-    img: "/assets/cat-1.jpg"
+    img: "/assets/download.jpg"
   },
   {
     num: "02",
@@ -20,7 +20,7 @@ const categories = [
     desc: "Find ready-to-wear shirts designed with clean tailoring and everyday ease. Choose your preferred fabric, select your size and fit, and enjoy shirts made for regular wear.",
     btn: "Shop Ready To Wear",
     href: "/ready-to-wear",
-    img: "/assets/cat-2.jpg"
+    img: "/assets/fabrics_hero_bg.png"
   },
   {
     num: "03",
@@ -29,7 +29,7 @@ const categories = [
     desc: "Create a more personal look with made-to-wear shirts tailored with refined details. Customize selected elements such as collars, cuffs, and buttons while maintaining a comfortable fit.",
     btn: "Start Personalizing",
     href: "/custom-tailoring?type=made-to-wear",
-    img: "/assets/cat-3.jpg"
+    img: "/assets/fabrics_reviews_bg.png"
   },
   {
     num: "04",
@@ -38,7 +38,7 @@ const categories = [
     desc: "Create a fully personalized shirt tailored around your measurements and preferences. From fit to finishing details, every piece is shaped to reflect your individual style.",
     btn: "Begin Bespoke",
     href: "/custom-tailoring?type=bespoke",
-    img: "/assets/cat-4.jpg"
+    img: "/assets/customized shirt .jpeg"
   }
 ];
 
