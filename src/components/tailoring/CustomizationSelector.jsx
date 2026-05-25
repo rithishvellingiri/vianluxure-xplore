@@ -2,8 +2,9 @@
 import { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { Check, Ruler, Info, ShoppingBag, ArrowLeft, ArrowRight, ShieldCheck } from "lucide-react";
+import { Check, Ruler, Info, ShoppingCart, ArrowLeft, ArrowRight, ShieldCheck } from "lucide-react";
 import { useTheme } from "@/components/theme/ThemeProvider";
+import { useAuth } from "@/context/AuthContext";
 
 const options = {
   fabric: [
@@ -23,6 +24,7 @@ const options = {
 
 function CustomizerInner() {
   const { theme, mounted } = useTheme();
+  const { addToCart } = useAuth();
   const isLight = mounted && theme === "light-linen";
 
   const searchParams = useSearchParams();
@@ -93,6 +95,28 @@ function CustomizerInner() {
 
   const handleAddToCart = () => {
     setSuccessMsg("Adding your tailored shirt to luxury wardrobe...");
+    
+    // Construct bespoke virtual product object
+    const bespokeProduct = {
+      id: `bespoke-${Date.now()}`,
+      name: selections.sizeMode === "custom" 
+        ? `Bespoke Masterpiece (${selections.fabric})`
+        : `Custom Shirt (${selections.fabric})`,
+      price: `₹${getFabricPrice().toLocaleString()}`,
+      img: options.fabric.find(f => f.name === selections.fabric)?.img || options.fabric[0].img,
+    };
+    
+    const sizeSelection = selections.sizeMode === "custom" ? "Custom Fit" : selections.standardSize;
+    const customizationDetails = {
+      fit: selections.fit,
+      collar: selections.collar,
+      cuff: selections.cuff,
+      sleeve: selections.sleeve,
+      pocket: selections.pocket,
+    };
+    
+    addToCart(bespokeProduct, sizeSelection, customizationDetails);
+
     setTimeout(() => {
       setSuccessMsg("Successfully Added! Customize another piece or view checkout.");
     }, 1500);
@@ -180,7 +204,7 @@ function CustomizerInner() {
                 onClick={handleAddToCart}
                 className="w-full bg-primary text-background hover:text-foreground font-semibold uppercase tracking-[0.2em] py-4 hover:bg-primary-hover transition-all text-xs flex items-center justify-center gap-2 rounded-sm shadow-xl"
               >
-                <ShoppingBag size={13} />
+                <ShoppingCart size={13} />
                 Order Custom Shirting
               </button>
               <div className="flex items-center justify-center gap-2 text-[10px] text-secondary-text mt-3 font-sans">

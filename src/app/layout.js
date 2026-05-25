@@ -3,6 +3,7 @@ import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { ThemeProvider } from "@/components/theme/ThemeProvider";
+import { AuthProvider } from "@/context/AuthContext";
 
 const playfair = Playfair_Display({
   variable: "--font-playfair",
@@ -26,9 +27,11 @@ export default function RootLayout({ children }) {
     <html lang="en" className={`${playfair.variable} ${inter.variable}`}>
       <body className="antialiased bg-background text-foreground min-h-screen flex flex-col transition-colors duration-500">
         <ThemeProvider>
-          <Navbar />
-          <main className="flex-grow">{children}</main>
-          <Footer />
+          <AuthProvider>
+            <Navbar />
+            <main className="flex-grow">{children}</main>
+            <Footer />
+          </AuthProvider>
         </ThemeProvider>
       </body>
     </html>

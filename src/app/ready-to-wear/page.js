@@ -1,8 +1,9 @@
 "use client";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Check, ShoppingBag, X, Star, ShieldCheck, Heart, Info } from "lucide-react";
+import { Check, ShoppingCart, X, Star, ShieldCheck, Heart, Info } from "lucide-react";
 import { useTheme } from "@/components/theme/ThemeProvider";
+import { useAuth } from "@/context/AuthContext";
 
 // Crawled ready to wear shirts collection
 const shirts = [
@@ -25,6 +26,7 @@ const reviews = [
 
 export default function ReadyToWearPage() {
   const { theme, mounted } = useTheme();
+  const { addToCart } = useAuth();
   const isLight = mounted && theme === "light-linen";
   const isInvertedClass = isLight ? "" : "invert";
 
@@ -32,7 +34,6 @@ export default function ReadyToWearPage() {
   const [hoveredProduct, setHoveredProduct] = useState(null);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [selectedSize, setSelectedSize] = useState("M");
-  const [cartCount, setCartCount] = useState(0);
   const [cartSuccess, setCartSuccess] = useState("");
 
   const filteredShirts = filter === "all" 
@@ -47,8 +48,8 @@ export default function ReadyToWearPage() {
 
   const handleAddToCart = (e) => {
     e.stopPropagation();
-    setCartSuccess("Added to luxury shopping bag!");
-    setCartCount(prev => prev + 1);
+    setCartSuccess("Added to luxury cart!");
+    addToCart(selectedProduct, selectedSize);
     setTimeout(() => {
       setCartSuccess("");
       setSelectedProduct(null);
@@ -94,11 +95,6 @@ export default function ReadyToWearPage() {
                 {category === "all" ? "All Shirts" : category === "linen" ? "Pure Linen" : category === "cotton" ? "Premium Cotton" : "Linen Blends"}
               </button>
             ))}
-          </div>
-
-          <div className="text-xs uppercase tracking-widest text-primary font-sans font-semibold flex items-center gap-2">
-            <ShoppingBag size={14} />
-            Bag Items: {cartCount}
           </div>
         </div>
 
@@ -315,8 +311,8 @@ export default function ReadyToWearPage() {
                       onClick={handleAddToCart}
                       className="flex-grow bg-primary text-background hover:text-foreground font-semibold uppercase tracking-widest text-xs py-4 hover:bg-primary-hover transition-colors duration-300 flex items-center justify-center gap-2"
                     >
-                      <ShoppingBag size={14} />
-                      Add to Shopping bag
+                      <ShoppingCart size={14} />
+                      ADD TO CART
                     </button>
                     
                     <a
