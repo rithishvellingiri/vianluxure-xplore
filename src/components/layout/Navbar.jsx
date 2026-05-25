@@ -33,17 +33,16 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
-        isScrolled 
-          ? "glass border-b border-border/10 py-4 shadow-md" 
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${isScrolled
+          ? "glass border-b border-border/10 py-4 shadow-md"
           : "bg-transparent py-8"
-      }`}
+        }`}
     >
       <div className="container mx-auto px-6 md:px-12 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-3" id="nav-logo-link">
-          <img 
-            src="/logo/VL_Global.svg" 
-            alt="VIAN LUXURE" 
+          <img
+            src="/logo/VL_Global.svg"
+            alt="VIAN LUXURE"
             className={`h-10 w-auto hover:scale-105 transition-all duration-300 ${isInvertedClass}`}
           />
         </Link>
@@ -56,9 +55,8 @@ export default function Navbar() {
               <Link
                 key={link.name}
                 href={link.href}
-                className={`relative text-xs uppercase tracking-[0.2em] transition-colors duration-300 font-semibold ${
-                  isActive ? "text-primary" : "text-foreground/80 hover:text-foreground"
-                }`}
+                className={`relative text-xs uppercase tracking-[0.2em] transition-colors duration-300 font-semibold ${isActive ? "text-primary" : "text-foreground/80 hover:text-foreground"
+                  }`}
                 id={`nav-link-${link.name.toLowerCase().replace(/\s+/g, "-")}`}
               >
                 {link.name}
@@ -78,35 +76,32 @@ export default function Navbar() {
           {/* Dynamic Theme Switcher Widget */}
           {mounted && (
             <div className="flex items-center gap-1 bg-foreground/5 p-1 rounded-full border border-border/10 shadow-inner mr-2">
-              <button 
+              <button
                 onClick={() => setTheme("light-linen")}
-                className={`p-1.5 rounded-full transition-all duration-300 cursor-pointer ${
-                  theme === "light-linen" 
-                    ? "bg-primary text-background shadow-sm scale-105" 
+                className={`p-1.5 rounded-full transition-all duration-300 cursor-pointer ${theme === "light-linen"
+                    ? "bg-primary text-background shadow-sm scale-105"
                     : "text-foreground/50 hover:text-foreground hover:scale-105"
-                }`}
+                  }`}
                 title="Light Linen Theme"
               >
                 <Sun size={12} />
               </button>
-              <button 
+              <button
                 onClick={() => setTheme("premium-gold")}
-                className={`p-1.5 rounded-full transition-all duration-300 cursor-pointer ${
-                  theme === "premium-gold" 
-                    ? "bg-primary text-background shadow-sm scale-105" 
+                className={`p-1.5 rounded-full transition-all duration-300 cursor-pointer ${theme === "premium-gold"
+                    ? "bg-primary text-background shadow-sm scale-105"
                     : "text-foreground/50 hover:text-foreground hover:scale-105"
-                }`}
+                  }`}
                 title="Premium Gold Theme"
               >
                 <Sparkles size={12} />
               </button>
-              <button 
+              <button
                 onClick={() => setTheme("luxury-dark")}
-                className={`p-1.5 rounded-full transition-all duration-300 cursor-pointer ${
-                  theme === "luxury-dark" 
-                    ? "bg-primary text-background shadow-sm scale-105" 
+                className={`p-1.5 rounded-full transition-all duration-300 cursor-pointer ${theme === "luxury-dark"
+                    ? "bg-primary text-background shadow-sm scale-105"
                     : "text-foreground/50 hover:text-foreground hover:scale-105"
-                }`}
+                  }`}
                 title="Luxury Dark Theme"
               >
                 <Moon size={12} />
@@ -114,30 +109,78 @@ export default function Navbar() {
             </div>
           )}
 
-          <button id="wishlist-trigger" className="text-foreground/80 hover:text-primary transition-colors duration-300 relative group cursor-pointer">
-            <img 
-              src="/icons/wishlist.svg" 
-              alt="Wishlist" 
-              className={`w-5 h-5 group-hover:scale-110 transition-transform ${isInvertedClass}`} 
+          <button
+            id="wishlist-trigger"
+            className="relative group cursor-pointer p-2 rounded-full hover:bg-primary/10 transition-all duration-300"
+          >
+            <img
+              src="/icons/wishlist.svg"
+              alt="Wishlist"
+              className={`
+      w-6 h-6
+      opacity-100
+      brightness-125
+      contrast-125
+      group-hover:scale-125
+      transition-all duration-300
+      ${isInvertedClass}
+    `}
             />
           </button>
-          
-          <button id="cart-trigger" className="text-foreground/80 hover:text-primary transition-colors duration-300 relative group cursor-pointer">
-            <img 
-              src="/icons/cart.svg" 
-              alt="Cart" 
-              className={`w-5 h-5 group-hover:scale-110 transition-transform ${isInvertedClass}`} 
+
+          <button
+            id="cart-trigger"
+            className="relative group cursor-pointer p-2 rounded-full hover:bg-primary/10 transition-all duration-300"
+          >
+            <img
+              src="/icons/cart.svg"
+              alt="Cart"
+              className={`
+      w-6 h-6
+      opacity-100
+      brightness-125
+      contrast-125
+      group-hover:scale-125
+      transition-all duration-300
+      ${isInvertedClass}
+    `}
             />
-            <span className="absolute -top-1.5 -right-2 bg-primary text-background text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center scale-90">
+
+            <span
+              className="
+      absolute -top-1 -right-1
+      bg-primary
+      text-white
+      text-[10px]
+      font-bold
+      w-5 h-5
+      rounded-full
+      flex items-center justify-center
+      shadow-lg
+      shadow-primary/30
+    "
+            >
               0
             </span>
           </button>
 
-          <Link href="/contact" id="profile-trigger" className="text-foreground/80 hover:text-primary transition-colors duration-300 group">
-            <img 
-              src="/icons/profile.svg" 
-              alt="Profile" 
-              className={`w-5 h-5 group-hover:scale-110 transition-transform ${isInvertedClass}`} 
+          <Link
+            href="/contact"
+            id="profile-trigger"
+            className="group cursor-pointer p-2 rounded-full hover:bg-primary/10 transition-all duration-300"
+          >
+            <img
+              src="/icons/profile.svg"
+              alt="Profile"
+              className={`
+      w-6 h-6
+      opacity-100
+      brightness-125
+      contrast-125
+      group-hover:scale-125
+      transition-all duration-300
+      ${isInvertedClass}
+    `}
             />
           </Link>
         </div>
@@ -145,10 +188,10 @@ export default function Navbar() {
         {/* Mobile Toggle */}
         <div className="flex items-center space-x-4 md:hidden">
           <button id="mobile-cart-trigger" className="text-foreground/80 hover:text-primary transition-colors relative mr-2">
-            <img 
-              src="/icons/cart.svg" 
-              alt="Cart" 
-              className={`w-6 h-6 ${isInvertedClass}`} 
+            <img
+              src="/icons/cart.svg"
+              alt="Cart"
+              className={`w-6 h-6 ${isInvertedClass}`}
             />
             <span className="absolute -top-1 -right-1.5 bg-primary text-background text-[8px] font-bold w-3.5 h-3.5 rounded-full flex items-center justify-center">
               0
@@ -180,42 +223,39 @@ export default function Navbar() {
             >
               <X size={32} />
             </button>
-            <img 
-              src="/logo/VL_Global.svg" 
-              alt="VIAN LUXURE" 
+            <img
+              src="/logo/VL_Global.svg"
+              alt="VIAN LUXURE"
               className={`h-12 w-auto mb-4 ${isInvertedClass}`}
             />
 
             {/* Mobile Theme Switcher */}
             {mounted && (
               <div className="flex items-center gap-2 bg-foreground/5 p-1 rounded-full border border-border/10 shadow-md mb-4">
-                <button 
+                <button
                   onClick={() => setTheme("light-linen")}
-                  className={`px-4 py-2 rounded-full transition-all duration-300 text-xs flex items-center gap-1.5 cursor-pointer ${
-                    theme === "light-linen" 
-                      ? "bg-primary text-background shadow-md font-semibold" 
+                  className={`px-4 py-2 rounded-full transition-all duration-300 text-xs flex items-center gap-1.5 cursor-pointer ${theme === "light-linen"
+                      ? "bg-primary text-background shadow-md font-semibold"
                       : "text-foreground/60"
-                  }`}
+                    }`}
                 >
                   <Sun size={14} /> Light
                 </button>
-                <button 
+                <button
                   onClick={() => setTheme("premium-gold")}
-                  className={`px-4 py-2 rounded-full transition-all duration-300 text-xs flex items-center gap-1.5 cursor-pointer ${
-                    theme === "premium-gold" 
-                      ? "bg-primary text-background shadow-md font-semibold" 
+                  className={`px-4 py-2 rounded-full transition-all duration-300 text-xs flex items-center gap-1.5 cursor-pointer ${theme === "premium-gold"
+                      ? "bg-primary text-background shadow-md font-semibold"
                       : "text-foreground/60"
-                  }`}
+                    }`}
                 >
                   <Sparkles size={14} /> Gold
                 </button>
-                <button 
+                <button
                   onClick={() => setTheme("luxury-dark")}
-                  className={`px-4 py-2 rounded-full transition-all duration-300 text-xs flex items-center gap-1.5 cursor-pointer ${
-                    theme === "luxury-dark" 
-                      ? "bg-primary text-background shadow-md font-semibold" 
+                  className={`px-4 py-2 rounded-full transition-all duration-300 text-xs flex items-center gap-1.5 cursor-pointer ${theme === "luxury-dark"
+                      ? "bg-primary text-background shadow-md font-semibold"
                       : "text-foreground/60"
-                  }`}
+                    }`}
                 >
                   <Moon size={14} /> Dark
                 </button>
@@ -231,9 +271,8 @@ export default function Navbar() {
               >
                 <Link
                   href={link.href}
-                  className={`text-xl uppercase tracking-[0.3em] font-semibold transition-colors ${
-                    pathname === link.href ? "text-primary" : "text-foreground/70 hover:text-foreground"
-                  }`}
+                  className={`text-xl uppercase tracking-[0.3em] font-semibold transition-colors ${pathname === link.href ? "text-primary" : "text-foreground/70 hover:text-foreground"
+                    }`}
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   {link.name}
