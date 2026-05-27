@@ -15,17 +15,42 @@ const options = {
     { id: "fab-5", name: "Charcoal Textured Blend", img: "/assets/Хлопок Костюмный серый производитель Италия артикул 2950 купить оптом и в розницу.jpg", price: "₹1,899", composition: "60% Linen / 40% Cotton" },
     { id: "fab-6", name: "Desert Sand Pure Linen", img: "/assets/Lino Shot Linen in Natural - The Confident Stitch.jpg", price: "₹1,499", composition: "100% Pure Flax" }
   ],
-  fit: ["Slim Fit", "Regular Fit", "Relaxed Fit"],
-  collar: ["Classic Collar", "Spread Collar", "Button Down Collar", "Mandarin Collar", "Cutaway Collar"],
-  cuff: ["Single Button Cuff", "Double Button Cuff", "French French Cuff", "Convertible Sport Cuff"],
-  pocket: ["No Pocket", "Single Point Pocket", "Round Bottom Pocket"],
-  sleeve: ["Long Sleeve", "Short Sleeve", "3/4 Sleeve"]
+  fit: [
+    { id: "slim", name: "Slim Fit", img: "/assets/slimfit.png" },
+    { id: "regular", name: "Regular Fit", img: "/assets/regular fit.png" },
+    { id: "relaxed", name: "Relaxed Fit", img: "/assets/relaxed fit.png" }
+  ],
+  collar: [
+    { id: "classic", name: "Classic Collar", img: "/assets/classic collar.png" },
+    { id: "spread", name: "Spread Collar", img: "/assets/spread collar.png" },
+    { id: "button-down", name: "Button Down Collar", img: "/assets/buttondown collar.png" },
+    { id: "mandarin", name: "Mandarin Collar", img: "/assets/mandarin collar.png" },
+    { id: "cutaway", name: "Cutaway Collar", img: "/assets/cutway collar.png" }
+  ],
+
+  cuff: [
+    { id: "single-button", name: "Single Button Cuff" ,img: "/assets/single button cuff.png"},
+    { id: "double-button", name: "Double Button Cuff" , img: "/assets/double button cuff.png"},
+    { id: "french-french", name: "French French Cuff" , img: "/assets/french cuff.png"},
+    { id: "convertible-sport", name: "Convertible Sport Cuff" , img: "/assets/convertible sport cuff.png"}
+  ],
+  pocket: [
+    { id: "no-pocket", name: "No Pocket" , img: "/assets/no pocket.png"},
+    { id: "single-point", name: "Single Point Pocket" , img: "/assets/single point pocket.png"},
+    { id: "round-bottom", name: "Round Bottom Pocket" , img: "/assets/round bottom pocket.png"}
+  ],
+  sleeve: [
+    { id: "long-sleeve", name: "Long Sleeve" , img: "/assets/long sleeve.png"},
+    { id: "short-sleeve", name: "Short Sleeve" , img: "/assets/short sleeve.png"},
+    { id: "three-quarter-sleeve", name: "3/4 Sleeve" , img: "/assets/3by4 sleeve.png"}
+  ]
 };
 
 function CustomizerInner() {
   const { theme, mounted } = useTheme();
   const { addToCart } = useAuth();
   const isLight = mounted && theme === "light-linen";
+
 
   const searchParams = useSearchParams();
   const fabricParam = searchParams.get("fabric");
@@ -57,6 +82,13 @@ function CustomizerInner() {
   }));
 
   const [activeTab, setActiveTab] = useState("fabric");
+  const selectedPreview =
+    ["collar", "cuff", "sleeve", "pocket"].includes(activeTab) &&
+      typeof options[activeTab][0] === "object"
+      ? options[activeTab].find(
+        item => item.name === selections[activeTab]
+      )
+      : null;
   const [successMsg, setSuccessMsg] = useState("");
 
   const tabs = [
@@ -95,17 +127,17 @@ function CustomizerInner() {
 
   const handleAddToCart = () => {
     setSuccessMsg("Adding your tailored shirt to luxury wardrobe...");
-    
+
     // Construct bespoke virtual product object
     const bespokeProduct = {
       id: `bespoke-${Date.now()}`,
-      name: selections.sizeMode === "custom" 
+      name: selections.sizeMode === "custom"
         ? `Bespoke Masterpiece (${selections.fabric})`
         : `Custom Shirt (${selections.fabric})`,
       price: `₹${getFabricPrice().toLocaleString()}`,
       img: options.fabric.find(f => f.name === selections.fabric)?.img || options.fabric[0].img,
     };
-    
+
     const sizeSelection = selections.sizeMode === "custom" ? "Custom Fit" : selections.standardSize;
     const customizationDetails = {
       fit: selections.fit,
@@ -114,7 +146,7 @@ function CustomizerInner() {
       sleeve: selections.sleeve,
       pocket: selections.pocket,
     };
-    
+
     addToCart(bespokeProduct, sizeSelection, customizationDetails);
 
     setTimeout(() => {
@@ -126,13 +158,13 @@ function CustomizerInner() {
     <div className="max-w-7xl mx-auto space-y-12">
       <div className="bg-card border border-border/40 overflow-hidden shadow-2xl backdrop-blur-md rounded-sm">
         <div className="grid grid-cols-1 lg:grid-cols-12">
-          
+
           {/* Left Side: Preview Panel */}
           <div className="col-span-1 lg:col-span-4 bg-card/45 p-8 md:p-10 flex flex-col items-center justify-between border-r border-border/40 relative overflow-hidden min-h-[600px]">
             <div className="absolute inset-0 z-0">
-              <img 
-                src={options.fabric.find(f => f.name === selections.fabric)?.img || options.fabric[0].img} 
-                alt="Fabric Preview" 
+              <img
+                src={options.fabric.find(f => f.name === selections.fabric)?.img || options.fabric[0].img}
+                alt="Fabric Preview"
                 className="w-full h-full object-cover opacity-20 filter grayscale"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-background via-background/85 to-transparent" />
@@ -143,7 +175,7 @@ function CustomizerInner() {
                 {typeParam === "made-to-wear" ? "Personalized Shirt" : "Bespoke Masterpiece"}
               </h3>
               <p className="text-[9px] text-secondary-text mb-8 tracking-[0.3em] uppercase">Live Technical Specification</p>
-              
+
               <div className="space-y-3.5 text-left p-6 glass rounded-sm">
                 <div className="flex justify-between items-center border-b border-border/20 pb-2.5">
                   <span className="text-secondary-text text-xs tracking-wider">Fabric Swatch</span>
@@ -169,7 +201,7 @@ function CustomizerInner() {
                   <span className="text-secondary-text text-xs tracking-wider">Pocket styling</span>
                   <span className="text-foreground font-medium text-xs text-right">{selections.pocket}</span>
                 </div>
-                
+
                 {/* Size block */}
                 <div className="flex justify-between items-center pb-1">
                   <span className="text-secondary-text text-xs tracking-wider">Size Selection</span>
@@ -189,7 +221,7 @@ function CustomizerInner() {
             <div className="relative z-10 w-full mt-8">
               <AnimatePresence>
                 {successMsg && (
-                  <motion.p 
+                  <motion.p
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0 }}
@@ -199,8 +231,8 @@ function CustomizerInner() {
                   </motion.p>
                 )}
               </AnimatePresence>
-              
-              <button 
+
+              <button
                 onClick={handleAddToCart}
                 className="w-full bg-primary text-background hover:text-foreground font-semibold uppercase tracking-[0.2em] py-4 hover:bg-primary-hover transition-all text-xs flex items-center justify-center gap-2 rounded-sm shadow-xl"
               >
@@ -226,20 +258,19 @@ function CustomizerInner() {
                     <button
                       key={tab.id}
                       onClick={() => setActiveTab(tab.id)}
-                      className={`uppercase tracking-widest text-[10px] md:text-xs font-semibold px-4 py-2 transition-all shrink-0 relative flex items-center gap-1.5 ${
-                        activeTab === tab.id
-                          ? "text-primary"
-                          : isCompleted 
+                      className={`uppercase tracking-widest text-[10px] md:text-xs font-semibold px-4 py-2 transition-all shrink-0 relative flex items-center gap-1.5 ${activeTab === tab.id
+                        ? "text-primary"
+                        : isCompleted
                           ? "text-foreground/80"
                           : "text-secondary-text hover:text-foreground"
-                      }`}
+                        }`}
                     >
                       {tab.label}
                       {isCompleted && <Check size={10} className="text-primary" />}
                       {activeTab === tab.id && (
-                        <motion.div 
-                          layoutId="activeTabUnderline" 
-                          className="absolute -bottom-[17px] left-0 right-0 h-[2px] bg-primary" 
+                        <motion.div
+                          layoutId="activeTabUnderline"
+                          className="absolute -bottom-[17px] left-0 right-0 h-[2px] bg-primary"
                         />
                       )}
                     </button>
@@ -257,7 +288,7 @@ function CustomizerInner() {
                     exit={{ opacity: 0, y: -12 }}
                     transition={{ duration: 0.25 }}
                   >
-                    
+
                     {/* STEP 1: FABRICS */}
                     {activeTab === "fabric" && (
                       <div className="space-y-6">
@@ -269,15 +300,14 @@ function CustomizerInner() {
                               <button
                                 key={fabric.name}
                                 onClick={() => handleSelect("fabric", fabric.name)}
-                                className={`relative group border text-left overflow-hidden h-40 transition-all rounded-sm flex flex-col justify-between p-4 ${
-                                  isSelected 
-                                    ? "border-primary shadow-[0_0_20px_rgba(212,175,55,0.15)]" 
-                                    : "border-border/40 hover:border-border/80 bg-card/25"
-                                }`}
+                                className={`relative group border text-left overflow-hidden h-40 transition-all rounded-sm flex flex-col justify-between p-4 ${isSelected
+                                  ? "border-primary shadow-[0_0_20px_rgba(212,175,55,0.15)]"
+                                  : "border-border/40 hover:border-border/80 bg-card/25"
+                                  }`}
                               >
                                 <img src={fabric.img} alt={fabric.name} className="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-75 transition-opacity" />
                                 <div className={`absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent`} />
-                                
+
                                 {isSelected ? (
                                   <div className="absolute top-3 right-3 text-primary bg-black/60 p-1 rounded-full backdrop-blur-sm z-10 border border-primary/20">
                                     <Check size={12} />
@@ -308,29 +338,30 @@ function CustomizerInner() {
                         </div>
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                           {options.fit.map(fitOption => {
-                            const isSelected = selections.fit === fitOption;
+                            const isSelected = selections.fit === fitOption.name;
                             return (
                               <button
-                                key={fitOption}
-                                onClick={() => handleSelect("fit", fitOption)}
-                                className={`p-6 border text-left flex flex-col justify-between h-44 transition-all rounded-sm relative ${
-                                  isSelected 
-                                    ? "border-primary bg-primary/[0.04] shadow-[0_0_20px_rgba(212,175,55,0.15)]" 
-                                    : "border-border/40 hover:border-border/80 bg-card/25"
-                                }`}
+                                key={fitOption.name}
+                                onClick={() => handleSelect("fit", fitOption.name)}
+                                className={`group border text-left overflow-hidden transition-all duration-300 rounded-sm relative flex flex-col justify-between ${isSelected
+                                  ? "border-primary bg-primary/[0.02] shadow-[0_0_25px_rgba(212,175,55,0.2)]"
+                                  : "border-border/40 hover:border-border/80 bg-card/25 hover:shadow-lg"
+                                  }`}
                               >
-                                {isSelected && <Check size={16} className="text-primary absolute top-4 right-4" />}
-                                <div className="space-y-2">
-                                  <h5 className="text-lg font-heading text-foreground tracking-wide">{fitOption}</h5>
-                                  <p className="text-xs text-secondary-text font-sans font-light leading-relaxed">
-                                    {fitOption === "Slim Fit" 
-                                      ? "Tapered torso, closer armholes, neat profile outlining chest and waist." 
-                                      : fitOption === "Regular Fit" 
-                                      ? "Traditional proportioning. Comfortable breathing space across shoulders." 
-                                      : "Generous fit offering continuous ventilation, loose drape, perfect for casual resort look."}
-                                  </p>
+                                {isSelected && (
+                                  <div className="absolute top-4 right-4 text-primary bg-black/60 p-1.5 rounded-full backdrop-blur-sm z-20 border border-primary/20 shadow-md">
+                                    <Check size={16} />
+                                  </div>
+                                )}
+
+                                <div className="w-full relative aspect-[3/4] overflow-hidden bg-white flex items-center justify-center">
+                                  <img
+                                    src={fitOption.img}
+                                    alt={fitOption.name}
+                                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                                  />
                                 </div>
-                                <div className={`mt-auto h-[2px] w-full scale-x-0 origin-left transition-transform duration-500 ${isSelected ? "bg-primary scale-x-100" : "bg-border/40"}`} />
+                                <div className={`h-[2px] w-full scale-x-0 origin-left transition-transform duration-500 ${isSelected ? "bg-primary scale-x-100" : "bg-border/40"}`} />
                               </button>
                             );
                           })}
@@ -344,24 +375,89 @@ function CustomizerInner() {
                         <h4 className="text-xl font-heading text-foreground mb-6 uppercase tracking-wider text-sm text-primary">
                           Select {activeTab} style
                         </h4>
+                        {selectedPreview?.img && (
+                          <div className="mb-8 w-full flex justify-center">
+                            <div className="relative w-full max-w-xl rounded-2xl overflow-hidden border border-border/40 bg-card/40 backdrop-blur-md shadow-[0_0_40px_rgba(212,175,55,0.15)]">
+
+                              <img
+                                src={selectedPreview.img}
+                                alt={selectedPreview.name}
+                                className="w-full h-[300px] object-contain p-6 transition-all duration-500"
+                              />
+
+                              
+
+                            </div>
+                          </div>
+                        )}
                         <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
                           {options[activeTab].map(option => {
-                            const isSelected = selections[activeTab] === option;
+
+                            const optionValue =
+                              typeof option === "object" ? option.name : option;
+
+                            const optionImg =
+                              typeof option === "object" ? option.img : null;
+
+                            const optionKey =
+                              typeof option === "object" ? option.id : option;
+
+                            const isSelected =
+                              selections[activeTab] === optionValue;
+
                             return (
                               <button
-                                key={option}
-                                onClick={() => handleSelect(activeTab, option)}
-                                className={`p-6 border text-left flex flex-col justify-between h-36 transition-all rounded-sm relative ${
-                                  isSelected 
-                                    ? "border-primary bg-primary/[0.03] shadow-[0_0_20px_rgba(212,175,55,0.1)]" 
-                                    : "border-border/40 hover:border-border/80 bg-card/25"
-                                }`}
+                                key={optionKey}
+                                onClick={() => handleSelect(activeTab, optionValue)}
+                                className={`p-6 border text-left flex flex-col justify-between transition-all rounded-sm relative overflow-hidden ${isSelected
+                                  ? "border-primary bg-primary/[0.03] shadow-[0_0_20px_rgba(212,175,55,0.1)]"
+                                  : "border-border/40 hover:border-border/80 bg-card/25"
+                                  }`}
                               >
-                                {isSelected && <Check size={14} className="text-primary absolute top-4 right-4" />}
-                                <span className={`text-sm font-medium tracking-wide ${isSelected ? "text-primary" : "text-foreground/80"}`}>
-                                  {option}
-                                </span>
-                                <div className={`h-[1px] w-full scale-x-0 origin-left transition-transform duration-500 ${isSelected ? "bg-primary scale-x-100" : "bg-border/40"}`} />
+
+                                {isSelected && (
+                                  <Check
+                                    size={14}
+                                    className="text-primary absolute top-4 right-4 z-20"
+                                  />
+                                )}
+
+                                {optionImg ? (
+                                  <div className="w-full">
+                                    <img
+                                      src={optionImg}
+                                      alt={optionValue}
+                                      className="w-full h-40 object-cover rounded-sm mb-4"
+                                    />
+
+                                    <span
+                                      className={`text-sm font-medium tracking-wide ${isSelected
+                                        ? "text-primary"
+                                        : "text-foreground/80"
+                                        }`}
+                                    >
+                                      {optionValue}
+                                    </span>
+                                  </div>
+                                ) : (
+                                  <>
+                                    <span
+                                      className={`text-sm font-medium tracking-wide ${isSelected
+                                        ? "text-primary"
+                                        : "text-foreground/80"
+                                        }`}
+                                    >
+                                      {optionValue}
+                                    </span>
+
+                                    <div
+                                      className={`h-[1px] w-full scale-x-0 origin-left transition-transform duration-500 ${isSelected
+                                        ? "bg-primary scale-x-100"
+                                        : "bg-border/40"
+                                        }`}
+                                    />
+                                  </>
+                                )}
                               </button>
                             );
                           })}
@@ -383,22 +479,20 @@ function CustomizerInner() {
                     </h4>
                     <p className="text-xs text-secondary-text font-sans font-light mt-1">Select your standard fit or fill custom bespoke parameters.</p>
                   </div>
-                  
+
                   {/* Selector toggle */}
                   <div className="flex bg-card p-1 rounded-sm border border-border/40 self-start">
                     <button
                       onClick={() => handleSelect("sizeMode", "standard")}
-                      className={`px-4 py-1.5 text-[10px] uppercase tracking-widest font-semibold transition-colors ${
-                        selections.sizeMode === "standard" ? "bg-primary text-background" : "text-secondary-text hover:text-foreground"
-                      }`}
+                      className={`px-4 py-1.5 text-[10px] uppercase tracking-widest font-semibold transition-colors ${selections.sizeMode === "standard" ? "bg-primary text-background" : "text-secondary-text hover:text-foreground"
+                        }`}
                     >
                       Standard Sizing
                     </button>
                     <button
                       onClick={() => handleSelect("sizeMode", "custom")}
-                      className={`px-4 py-1.5 text-[10px] uppercase tracking-widest font-semibold transition-colors ${
-                        selections.sizeMode === "custom" ? "bg-primary text-background" : "text-secondary-text hover:text-foreground"
-                      }`}
+                      className={`px-4 py-1.5 text-[10px] uppercase tracking-widest font-semibold transition-colors ${selections.sizeMode === "custom" ? "bg-primary text-background" : "text-secondary-text hover:text-foreground"
+                        }`}
                     >
                       Custom Tailored
                     </button>
@@ -407,7 +501,7 @@ function CustomizerInner() {
 
                 <AnimatePresence mode="wait">
                   {selections.sizeMode === "standard" ? (
-                    <motion.div 
+                    <motion.div
                       key="standard"
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
@@ -418,18 +512,17 @@ function CustomizerInner() {
                         <button
                           key={sz}
                           onClick={() => handleSelect("standardSize", sz)}
-                          className={`w-12 h-12 rounded-sm border flex items-center justify-center font-heading text-sm transition-all ${
-                            selections.standardSize === sz 
-                              ? "border-primary bg-primary/10 text-primary shadow-[0_0_15px_rgba(212,175,55,0.15)]" 
-                              : "border-border/40 hover:border-border/80 bg-card/25 text-foreground/70"
-                          }`}
+                          className={`w-12 h-12 rounded-sm border flex items-center justify-center font-heading text-sm transition-all ${selections.standardSize === sz
+                            ? "border-primary bg-primary/10 text-primary shadow-[0_0_15px_rgba(212,175,55,0.15)]"
+                            : "border-border/40 hover:border-border/80 bg-card/25 text-foreground/70"
+                            }`}
                         >
                           {sz}
                         </button>
                       ))}
                     </motion.div>
                   ) : (
-                    <motion.div 
+                    <motion.div
                       key="custom"
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
@@ -472,7 +565,7 @@ function CustomizerInner() {
                 <ArrowLeft size={12} className="group-hover:-translate-x-0.5 transition-transform" />
                 Previous Step
               </button>
-              
+
               <button
                 onClick={handleNext}
                 disabled={currentTabIdx === tabs.length - 1}
@@ -487,7 +580,7 @@ function CustomizerInner() {
 
         </div>
       </div>
-      
+
       {/* Editorial Tailoring Steps Showcase */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {[
